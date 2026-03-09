@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+
+int main(){
+    int id = shmget(IPC_PRIVATE,50,0666|IPC_CREAT);
+    char *p = shmat(id,NULL,0);
+    printf("Enter: "); scanf("%s",p);
+    printf("Shared: %s\n",p);
+    shmdt(p);
+    shmctl(id,IPC_RMID,NULL);
+}
