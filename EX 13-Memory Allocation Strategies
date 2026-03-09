@@ -1,0 +1,15 @@
+#include <stdio.h>
+int main(){
+    int b[5]={100,500,200,300,600};
+    int p[3]={212,417,112};
+    int i,j;
+    printf("First Fit:\n");
+    for(i=0;i<3;i++)
+        for(j=0;j<5;j++)
+            if(p[i]<=b[j]){
+                printf("P%d -> Block %d\n",i+1,j+1);
+                b[j]-=p[i];
+                break;
+            }
+    return 0;
+}
